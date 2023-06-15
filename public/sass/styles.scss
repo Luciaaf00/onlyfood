@@ -1,0 +1,81 @@
+// $colorRojo=;
+$letraParrafo : Verdana;
+$letraTitulo : Franklin Gothic Medium;
+
+
+body{
+    display: grid;
+}
+span{
+    font-family: $letraTitulo;
+    font-size: 20px;
+}
+footer{
+    background-color: slateblue;
+}
+nav{
+    color: white;
+    font-size: $letraParrafo;
+    background-color: slateblue;
+    span{
+        color: white;
+    }
+    #login{
+        align-items: center;
+        justify-content: center;
+    }
+}
+.carousel-inner{
+    img{
+        width: 100%;
+        height: auto;
+        filter: brightness(30%);
+    }
+    #texto{     
+        color: white;
+    }
+
+}
+.row{
+    img{
+      height: 14em;
+      border-radius: 5px;  
+    }
+    #estrella{
+        height: 2em;
+    }
+    h5{
+        font-family: $letraTitulo;
+        
+    }
+    p{
+        font-family: $letraParrafo;
+    }
+}
+#imagenes_restaurantes{
+    width: 98%;
+    height: 500px;
+}
+#comida{
+    width: 140px;
+    height: 140px;
+}
+h1{
+    font-family: $letraTitulo;
+}
+label{
+    font-family: $letraParrafo;
+    font-weight: bold;
+}
+#small-s{
+    font-size: 10px;
+    max-width: 50%;
+}
+
+#footer{
+    background-color: slateblue;
+    color: white;
+    a{
+        color: white;
+    }
+}

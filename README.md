@@ -1,2 +1,4 @@
-# onlyfood
-Realización de una aplicación para pedir comida a domicilio o reservar en el propio restaurante.
+##
+ Tras descargar el proyecto, hacer "npm i" para instalar los paquetes necesarios.
+##
+ Para visualizarlo, iniciar en termina "npm run dev" y después ir a "localhost:4000"

@@ -1,0 +1,62 @@
+<%- include("../template/cabecera") %>
+<div class="container">
+    <!--Si existen elementos en el array de Pedido-->
+    <% if (arrayPedido.length > 0) { %>
+     <!--Haremos el foreach para recorrer el array-->
+     <% arrayPedido.forEach(pedido => { %>
+       <!--Aquí podremos mostrar todos los pokemon en una tabla-->
+     <% }) %>
+    <% } %>
+</div>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Pedidos</h1>
+    <div class="table-responsive-sm table-responsive-md">
+      <table class="table table-hover table-light">
+          <thead>
+              <tr class="table-dark">
+                <th scope="col">Restaurante</th>
+                <th scope="col">Comida</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <% if (arrayPedido.length>0) {%>
+                      <% arrayPedido.forEach(pedido =>{ %>
+                <td><%= pedido.restaurante  %></td>
+                <td><%= pedido.comida  %></td>
+                <td><%= pedido.cantidad  %></td>
+                <td><button class="btn btn-danger btn-sm btn-eliminar" data-id="<%= pedido.id %>">Borrar</button></td>
+              
+              </tr>
+              <% }) %>
+              <% } %>
+            </tbody>
+      </table>
+  </div>
+
+    
+</div>
+<%- include("../template/footer") %>
+<script>
+const btnEliminarList = document.querySelectorAll('.btn-eliminar');
+btnEliminarList.forEach((btnEliminar) => {
+  btnEliminar.addEventListener('click', async () => {
+    console.log(btnEliminar.dataset.id);
+    try {
+      const data = await fetch(`/pedido/${btnEliminar.dataset.id}`, {
+        method: 'delete',
+      });
+      const res = await data.json();
+      console.log(res);
+      if (res.estado) {
+        window.location.href = '/pedido';
+      } else {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+});
+</script>

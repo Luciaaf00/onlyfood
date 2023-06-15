@@ -1,0 +1,66 @@
+<%- include("../template/cabecera") %>
+<div class="container">
+    <!--Si existen elementos en el array de reserva-->
+    <% if (arrayReserva.length > 0) { %>
+     <!--Haremos el foreach para recorrer el array-->
+     <% arrayReserva.forEach(reserva => { %>
+       <!--Aquí podremos mostrar todos los pokemon en una tabla-->
+     <% }) %>
+    <% } %>
+</div>
+<div class="container ">
+    <h1 class="d-flex flex-row justify-content-center alig-items-center">Reserva</h1>
+    <div class="table-responsive-sm table-responsive-md">
+      <table class="table table-hover table-light">
+          <thead>
+              <tr class="table-dark">
+                <th scope="col">Restaurante</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora</th>
+                <th scope="col">Móvil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <% if (arrayReserva.length>0) {%>
+                      <% arrayReserva.forEach(reserva =>{ %>
+                <td><%= reserva.restaurante  %></td>
+                <td><%= reserva.usuario  %></td>
+                <td><%= reserva.fecha  %></td>
+                <td><%= reserva.hora  %></td>
+                <td><%= reserva.numero  %></td>
+                <td><button class="btn btn-danger btn-sm btn-eliminar" data-id="<%= reserva.id %>">Borrar</button></td>
+              
+              </tr>
+              <% }) %>
+              <% } %>
+            </tbody>
+      </table>
+  </div>
+
+    
+</div>
+<%- include("../template/footer") %>
+<script>
+ const btnEliminarList = document.querySelectorAll('.btn-eliminar');
+btnEliminarList.forEach((btnEliminar) => {
+  btnEliminar.addEventListener('click', async () => {
+    console.log(btnEliminar.dataset.id);
+    try {
+      const data = await fetch(`/reserva/${btnEliminar.dataset.id}`, {
+        method: 'delete',
+      });
+      const res = await data.json();
+      console.log(res);
+      if (res.estado) {
+        window.location.href = '/reserva';
+      } else {
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
+});
+</script>
